@@ -17,15 +17,18 @@ public class GamePanel extends JPanel {
     public GamePanel() {
         setBackground(Color.BLACK);
 
-        // Mouse se shoot
+        // Mouse click = shoot
         addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mousePressed(java.awt.event.MouseEvent e) {
+
                 if (!isShot) {
                     double angle = Math.atan2(e.getY() - y, e.getX() - x);
-                    dx = Math.cos(angle) * 5;
-                    dy = Math.sin(angle) * 5;
-                    isShot = true;
+
+                    dx = Math.cos(angle) * 6;
+                    dy = Math.sin(angle) * 6;
+
+                    isShot = true; // shoot start
                 }
             }
         });
@@ -37,7 +40,7 @@ public class GamePanel extends JPanel {
                 x += dx;
                 y += dy;
 
-                // Agar bubble screen se bahar chali jaaye
+                // agar screen se bahar chali jaaye
                 if (y < 0 || x < 0 || x > getWidth()) {
                     resetBubble();
                 }
